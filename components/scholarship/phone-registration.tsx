@@ -96,9 +96,9 @@ export function PhoneRegistration({
       {step === 'phone' && (
         <div className="w-full max-w-md space-y-6">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Get Started</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Register for Pratham</h2>
             <p className="mt-2 text-sm text-gray-600">
-              Enter your mobile number to register for the scholarship test
+              Enter your mobile number to get started
             </p>
           </div>
 
@@ -108,8 +108,10 @@ export function PhoneRegistration({
                 Mobile Number
               </label>
               <div className="flex gap-2">
-                <div className="flex items-center bg-gray-100 px-3 rounded-lg border border-gray-300">
-                  <span className="text-gray-700 font-medium">+91</span>
+                <div className="flex items-center px-3 rounded-lg border-2" style={{ borderColor: 'var(--brand-primary)', backgroundColor: 'var(--brand-bg-soft)' }}>
+                  <span className="font-medium" style={{ color: 'var(--brand-primary)' }}>
+                    +91
+                  </span>
                 </div>
                 <Input
                   id="phone"
@@ -133,7 +135,8 @@ export function PhoneRegistration({
             <Button
               onClick={handlePhoneSubmit}
               disabled={loading || phoneNumber.replace(/\D/g, '').length < 10}
-              className="w-full bg-green-600 hover:bg-green-700 text-white"
+              className="w-full text-white"
+              style={{ backgroundColor: 'var(--brand-primary)' }}
             >
               {loading ? 'Sending OTP...' : 'Send OTP'}
             </Button>
@@ -155,7 +158,8 @@ export function PhoneRegistration({
           />
           <button
             onClick={handleBackToPhone}
-            className="mt-6 text-sm text-blue-600 hover:text-blue-700"
+            className="mt-6 text-sm hover:opacity-80"
+            style={{ color: 'var(--brand-primary)' }}
             disabled={loading}
           >
             ← Change phone number

@@ -24,39 +24,50 @@ export function ScholarshipCard({
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
       {/* Header with gradient */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-8">
+      <div
+        className="px-6 py-8"
+        style={{
+          background: `linear-gradient(135deg, var(--brand-primary), #0d5d56)`,
+        }}
+      >
         <div className="flex items-start justify-between">
           <div>
             <h3 className="text-2xl font-bold text-white">{title}</h3>
-            <p className="text-blue-100 mt-2">{description}</p>
+            <p className="text-teal-50 mt-2">{description}</p>
           </div>
-          <Award className="w-8 h-8 text-yellow-300 flex-shrink-0" />
+          <Award className="w-8 h-8 flex-shrink-0" style={{ color: 'var(--brand-secondary)' }} />
         </div>
       </div>
 
       {/* Content */}
       <div className="px-6 py-6 space-y-4">
         {/* Scholarship amount */}
-        <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-          <p className="text-sm text-green-700">Get up to</p>
-          <p className="text-3xl font-bold text-green-600">{scholarshipPercentage}%</p>
-          <p className="text-sm text-green-700">scholarship on subscriptions</p>
+        <div className="rounded-lg p-4 border-2" style={{ backgroundColor: 'var(--brand-bg-soft)', borderColor: 'var(--brand-primary)' }}>
+          <p className="text-sm" style={{ color: 'var(--brand-primary)' }}>
+            Get up to
+          </p>
+          <p className="text-3xl font-bold" style={{ color: 'var(--brand-primary)' }}>
+            {scholarshipPercentage}%
+          </p>
+          <p className="text-sm" style={{ color: 'var(--brand-primary)' }}>
+            merit-based scholarship
+          </p>
         </div>
 
         {/* Details grid */}
         <div className="space-y-3">
           <div className="flex items-start gap-3">
-            <Clock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+            <Clock className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
             <div>
-              <p className="text-sm font-medium text-gray-900">Test Schedule</p>
+              <p className="text-sm font-medium text-gray-900">Test Details</p>
               <p className="text-sm text-gray-600">{testSchedule}</p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <BookOpen className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+            <BookOpen className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
             <div>
-              <p className="text-sm font-medium text-gray-900">Target Classes</p>
+              <p className="text-sm font-medium text-gray-900">For</p>
               <p className="text-sm text-gray-600">{targetClasses}</p>
             </div>
           </div>
@@ -67,12 +78,13 @@ export function ScholarshipCard({
       <div className="px-6 py-4 bg-gray-50 border-t">
         <Button
           onClick={onRegisterClick}
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
+          className="w-full text-white font-semibold"
+          style={{ backgroundColor: 'var(--brand-primary)' }}
         >
-          Enroll for Free
+          Register Now
         </Button>
         <p className="text-xs text-gray-600 text-center mt-3">
-          T&C apply, as available on the platform
+          Limited to first 50 confirmed admissions
         </p>
       </div>
     </div>

@@ -3,15 +3,15 @@
 import { useState } from 'react'
 import { ScholarshipCard } from '@/components/scholarship/scholarship-card'
 import { PhoneRegistration } from '@/components/scholarship/phone-registration'
-import { Award, Star, Users } from 'lucide-react'
+import { Award, Star, Users, BookOpen, Target, Users2 } from 'lucide-react'
 
 const SCHOLARSHIP = {
-  id: 'cbse-scholarship-2024',
-  title: 'CBSE Scholarship Test',
-  description: 'All India Scholarship Test for CBSE Students',
-  testSchedule: 'Every Sunday, 12 PM',
-  scholarshipPercentage: 90,
-  targetClasses: 'Class 6 - 12 & Foundation',
+  id: 'pratham-gs-foundation-2027',
+  title: 'Pratham Scholarship Test',
+  description: 'GS Foundation Course for UPSC CSE 2027',
+  testSchedule: 'Offline - Scheduled Dates',
+  scholarshipPercentage: 70,
+  targetClasses: 'UPSC Aspirants 2027',
 }
 
 export default function ScholarshipLanding() {
@@ -25,33 +25,42 @@ export default function ScholarshipLanding() {
 
   if (registrationComplete) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-600 to-blue-800 flex items-center justify-center px-4">
+      <div
+        className="min-h-screen bg-gradient-to-b from-teal-600 to-teal-800 flex items-center justify-center px-4"
+        style={{
+          background: `linear-gradient(to bottom, var(--brand-primary), #0d5d56)`,
+        }}
+      >
         <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center space-y-6">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-            <Award className="w-8 h-8 text-green-600" />
+          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
+            <Award className="w-8 h-8 text-emerald-600" />
           </div>
 
           <div>
             <h2 className="text-2xl font-bold text-gray-900">Registration Successful!</h2>
             <p className="text-gray-600 mt-2">
-              You're all set for the CBSE Scholarship Test. Check your email for further details.
+              You're all set for the Pratham Scholarship Test. Check your email for further details.
             </p>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-4 space-y-2">
+          <div
+            className="rounded-lg p-4 space-y-2"
+            style={{ backgroundColor: 'var(--brand-bg-soft)' }}
+          >
             <p className="text-sm text-gray-700">
               <span className="font-semibold">Next Steps:</span>
             </p>
             <ul className="text-sm text-gray-600 space-y-1">
-              <li>✓ Confirm your email and phone</li>
-              <li>✓ Study materials will be sent soon</li>
-              <li>✓ Join our test at the scheduled time</li>
+              <li>✓ Verify your phone number with OTP</li>
+              <li>✓ Complete your profile details</li>
+              <li>✓ Receive test schedule and preparation materials</li>
             </ul>
           </div>
 
           <button
             onClick={() => setRegistrationComplete(false)}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg"
+            className="w-full text-white font-semibold py-2 rounded-lg transition-colors"
+            style={{ backgroundColor: 'var(--brand-primary)' }}
           >
             Back to Home
           </button>
@@ -61,22 +70,27 @@ export default function ScholarshipLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Award className="w-6 h-6 text-blue-600" />
-            <span className="font-bold text-xl text-gray-900">ScholarshipTest</span>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
+              <Award className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-gray-600">Bariar's IAS Academy</p>
+              <span className="font-bold text-lg text-gray-900">Pratham</span>
+            </div>
           </div>
           <nav className="hidden md:flex gap-6 text-sm">
-            <a href="#about" className="text-gray-600 hover:text-blue-600">
+            <a href="#about" className="text-gray-600 hover:text-gray-900" style={{ color: 'inherit' }}>
               About
             </a>
-            <a href="#features" className="text-gray-600 hover:text-blue-600">
-              Features
+            <a href="#features" className="text-gray-600 hover:text-gray-900" style={{ color: 'inherit' }}>
+              Why Pratham
             </a>
-            <a href="#faq" className="text-gray-600 hover:text-blue-600">
+            <a href="#faq" className="text-gray-600 hover:text-gray-900" style={{ color: 'inherit' }}>
               FAQ
             </a>
           </nav>
@@ -89,39 +103,38 @@ export default function ScholarshipLanding() {
           {/* Left side - Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
-                🏆 Free Scholarship Test
+              <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: 'var(--brand-bg-soft)', color: 'var(--brand-primary)' }}>
+                Pratham Scholarship Test
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                Get <span className="text-blue-600">90% Scholarship</span> on Online Subscriptions
+                Get up to <span style={{ color: 'var(--brand-primary)' }}>70% Scholarship</span> for GS Foundation Course
               </h1>
               <p className="text-lg text-gray-600">
-                Appear for the CBSE Scholarship Test and unlock premium learning at discounted rates. Perfect for
-                students from Class 6 to 12 and Foundation programs.
+                Pratham is your structured entry into UPSC 2027 preparation. A merit-based scholarship test designed for serious aspirants planning the Civil Services journey.
               </p>
             </div>
 
             {/* Key highlights */}
             <div className="space-y-3">
               <div className="flex gap-3 items-start">
-                <Star className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-1" />
+                <Target className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <p className="font-semibold text-gray-900">Completely Free</p>
-                  <p className="text-gray-600 text-sm">No registration fees or hidden costs</p>
+                  <p className="font-semibold text-gray-900">Assess Your Readiness</p>
+                  <p className="text-gray-600 text-sm">Know where you stand and plan your UPSC journey</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <Star className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-1" />
+                <BookOpen className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <p className="font-semibold text-gray-900">Regular Tests</p>
-                  <p className="text-gray-600 text-sm">Every Sunday at 12 PM IST</p>
+                  <p className="font-semibold text-gray-900">Guided Preparation</p>
+                  <p className="text-gray-600 text-sm">One-on-one mentorship and personalized roadmap included</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <Star className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-1" />
+                <Users2 className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: 'var(--brand-primary)' }} />
                 <div>
-                  <p className="font-semibold text-gray-900">Instant Results</p>
-                  <p className="text-gray-600 text-sm">Get your scholarship certificate immediately</p>
+                  <p className="font-semibold text-gray-900">Limited Seats</p>
+                  <p className="text-gray-600 text-sm">Only 50 scholarship admissions - apply early</p>
                 </div>
               </div>
             </div>
@@ -158,35 +171,35 @@ export default function ScholarshipLanding() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="bg-white py-16 md:py-24">
+      <section id="features" className="py-16 md:py-24" style={{ backgroundColor: 'var(--brand-bg-soft)' }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Why Join Us?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Why Pratham?</h2>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Thousands of students have benefited from our scholarship programs
+              More than just a scholarship exam—your gateway to structured UPSC preparation
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
+                icon: Target,
+                title: 'Readiness Assessment',
+                description: 'Evaluate your UPSC preparation level before committing long-term',
+              },
+              {
+                icon: BookOpen,
+                title: 'Mentorship & Guidance',
+                description: 'One-on-one counselling and personalized preparation roadmap included',
+              },
+              {
                 icon: Award,
-                title: 'Merit-Based Scholarships',
-                description: 'Get recognized for your academic excellence with substantial discounts',
-              },
-              {
-                icon: Users,
-                title: 'Supportive Community',
-                description: 'Join thousands of ambitious students preparing together',
-              },
-              {
-                icon: Star,
-                title: 'Expert Content',
-                description: 'Access top-quality study materials and live classes',
+                title: 'Up to 70% Scholarship',
+                description: 'Merit-based scholarship to the GS Foundation Course 2027',
               },
             ].map((feature, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 space-y-4">
-                <feature.icon className="w-12 h-12 text-blue-600" />
+              <div key={idx} className="bg-white rounded-xl p-8 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+                <feature.icon className="w-12 h-12" style={{ color: 'var(--brand-primary)' }} />
                 <h3 className="text-xl font-bold text-gray-900">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </div>
@@ -199,13 +212,15 @@ export default function ScholarshipLanding() {
       <section className="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <div className="grid md:grid-cols-4 gap-8 text-center">
           {[
-            { number: '50,000+', label: 'Active Students' },
-            { number: '₹10Cr+', label: 'Scholarships Awarded' },
-            { number: '95%', label: 'Success Rate' },
-            { number: '4.8/5', label: 'Student Rating' },
+            { number: '70%', label: 'Max Scholarship' },
+            { number: '50', label: 'Scholarship Seats' },
+            { number: '60 mins', label: 'Test Duration' },
+            { number: '50', label: 'Test Questions' },
           ].map((stat, idx) => (
             <div key={idx} className="space-y-2">
-              <p className="text-4xl font-bold text-blue-600">{stat.number}</p>
+              <p className="text-4xl font-bold" style={{ color: 'var(--brand-primary)' }}>
+                {stat.number}
+              </p>
               <p className="text-gray-600">{stat.label}</p>
             </div>
           ))}
@@ -220,27 +235,27 @@ export default function ScholarshipLanding() {
           <div className="space-y-6">
             {[
               {
-                q: 'Is the scholarship test really free?',
-                a: 'Yes! The test is completely free. There are no hidden charges or registration fees.',
+                q: 'Is Pratham difficult?',
+                a: 'No. The test is designed for beginners and focuses on aptitude and basic GS orientation—no heavy current affairs required.',
               },
               {
-                q: 'How often are the tests conducted?',
-                a: 'Tests are held every Sunday at 12 PM IST. You can participate in as many tests as you want.',
+                q: 'Who should take Pratham?',
+                a: 'Aspirants targeting UPSC CSE 2027, college students planning early preparation, and serious beginners seeking clarity and structure.',
               },
               {
-                q: 'What is the duration of the test?',
-                a: 'The test duration is typically 60-90 minutes depending on your class level.',
+                q: 'What is the scholarship structure?',
+                a: 'Top performers: Up to 70% scholarship | Next merit ranks: 20-30% scholarship | Qualifying candidates: 10% scholarship. Limited to first 50 confirmed admissions.',
               },
               {
-                q: 'How will I know my results?',
-                a: 'Results are declared immediately after the test. Your scholarship certificate will be sent via email.',
+                q: 'What happens after I appear for the test?',
+                a: 'You receive a detailed performance assessment, understand your strengths/gaps, and get a one-on-one mentorship session with personalized preparation guidance.',
               },
               {
-                q: 'Can I retake the test?',
-                a: 'Yes! You can appear for multiple tests to improve your scholarship percentage.',
+                q: 'Can I appear for Pratham if I have never studied for UPSC?',
+                a: 'Absolutely! Pratham is designed for beginners. No prior coaching or heavy preparation required.',
               },
             ].map((item, idx) => (
-              <div key={idx} className="border-l-4 border-blue-600 pl-6 py-4">
+              <div key={idx} className="border-l-4 pl-6 py-4" style={{ borderColor: 'var(--brand-primary)' }}>
                 <h3 className="font-semibold text-gray-900 mb-2">{item.q}</h3>
                 <p className="text-gray-600">{item.a}</p>
               </div>
@@ -250,15 +265,16 @@ export default function ScholarshipLanding() {
       </section>
 
       {/* Footer CTA */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 py-16">
+      <section className="py-16" style={{ background: `linear-gradient(135deg, var(--brand-primary), #0d5d56)` }}>
         <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Get Started?</h2>
-          <p className="text-blue-100 text-lg">Join thousands of students preparing for success</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Begin Your UPSC Journey?</h2>
+          <p className="text-white text-opacity-90 text-lg">Take Pratham now. Understand where you stand. Start right.</p>
           <button
             onClick={() => setShowRegistration(true)}
-            className="inline-block bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg transition-colors"
+            className="inline-block text-teal-700 font-bold py-3 px-8 rounded-lg transition-colors hover:opacity-90"
+            style={{ backgroundColor: 'var(--brand-secondary)' }}
           >
-            Register Now for Free
+            Register for Pratham Test
           </button>
         </div>
       </section>
@@ -268,60 +284,65 @@ export default function ScholarshipLanding() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="font-bold text-white mb-4">ScholarshipTest</h4>
-              <p className="text-sm">Making quality education accessible to all students.</p>
+              <h4 className="font-bold text-white mb-4">Bariar's IAS Academy</h4>
+              <p className="text-sm">Concept-driven UPSC coaching with mentorship-focused approach. Located in Bangalore.</p>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Company</h4>
+              <h4 className="font-bold text-white mb-4">Programs</h4>
               <ul className="text-sm space-y-2">
                 <li>
                   <a href="#" className="hover:text-white">
-                    About Us
+                    Pratham Test
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Contact
+                    GS Foundation 2027
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Blog
+                    Optional Courses
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Legal</h4>
+              <h4 className="font-bold text-white mb-4">Explore</h4>
               <ul className="text-sm space-y-2">
                 <li>
                   <a href="#" className="hover:text-white">
-                    Privacy Policy
+                    About Academy
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Terms of Service
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white">
+                    Study Materials
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Follow Us</h4>
+              <h4 className="font-bold text-white mb-4">Follow</h4>
               <ul className="text-sm space-y-2">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Facebook
-                  </a>
-                </li>
                 <li>
                   <a href="#" className="hover:text-white">
                     Instagram
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white">
+                    YouTube
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white">
+                    LinkedIn
                   </a>
                 </li>
               </ul>
@@ -329,7 +350,7 @@ export default function ScholarshipLanding() {
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            <p>&copy; 2024 ScholarshipTest. All rights reserved.</p>
+            <p>&copy; 2024 Bariar's IAS Academy. All rights reserved. | UPSC Coaching in Bangalore</p>
           </div>
         </div>
       </footer>

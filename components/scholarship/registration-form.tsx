@@ -123,17 +123,18 @@ export function RegistrationForm({
             onChange={(e) => setClassLevel(e.target.value)}
             disabled={loading}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border-2 rounded-lg focus:outline-none"
+            style={{
+              borderColor: 'var(--brand-primary)',
+              backgroundColor: 'white',
+            }}
           >
-            <option value="">Select your class</option>
-            <option value="class-6">Class 6</option>
-            <option value="class-7">Class 7</option>
-            <option value="class-8">Class 8</option>
-            <option value="class-9">Class 9</option>
-            <option value="class-10">Class 10</option>
-            <option value="class-11">Class 11</option>
-            <option value="class-12">Class 12</option>
-            <option value="foundation">Foundation</option>
+            <option value="">Select your aspirant type</option>
+            <option value="upsc-2027">UPSC CSE 2027 Aspirant</option>
+            <option value="beginners">Beginner/Early Stage</option>
+            <option value="college-student">College Student</option>
+            <option value="working-professional">Working Professional</option>
+            <option value="other">Other</option>
           </select>
         </div>
 
@@ -142,14 +143,15 @@ export function RegistrationForm({
         <Button
           type="submit"
           disabled={loading || !fullName.trim() || !classLevel}
-          className="w-full bg-green-600 hover:bg-green-700 text-white"
+          className="w-full text-white"
+          style={{ backgroundColor: 'var(--brand-primary)' }}
         >
           {loading ? 'Registering...' : 'Complete Registration'}
         </Button>
       </form>
 
-      <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-        <p className="text-xs text-blue-800">
+      <div className="mt-4 p-3 rounded-lg" style={{ backgroundColor: 'var(--brand-bg-soft)' }}>
+        <p className="text-xs" style={{ color: 'var(--brand-primary)' }}>
           <strong>Verified:</strong> Phone number {phoneNumber} ✓
         </p>
       </div>

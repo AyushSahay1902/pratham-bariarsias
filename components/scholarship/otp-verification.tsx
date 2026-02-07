@@ -103,7 +103,8 @@ export function OTPVerification({
         <Button
           onClick={handleVerify}
           disabled={verifying || isLoading || otp.length !== 6}
-          className="w-full bg-green-600 hover:bg-green-700 text-white"
+          className="w-full text-white"
+          style={{ backgroundColor: 'var(--brand-primary)' }}
         >
           {verifying ? 'Verifying...' : 'Verify OTP'}
         </Button>
@@ -114,7 +115,8 @@ export function OTPVerification({
             <button
               onClick={handleResendOTP}
               disabled={resendCooldown > 0 || isLoading}
-              className="text-blue-600 hover:text-blue-700 disabled:text-gray-400 font-medium"
+              className="hover:opacity-80 disabled:text-gray-400 font-medium"
+              style={{ color: 'var(--brand-primary)' }}
             >
               {resendCooldown > 0 ? `Resend in ${resendCooldown}s` : 'Resend OTP'}
             </button>
