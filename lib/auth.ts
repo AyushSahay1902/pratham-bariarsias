@@ -9,11 +9,41 @@ import { createClient } from '@/lib/supabase/client'
 export async function signInWithOTP(phoneNumber: string) {
   const supabase = createClient()
 
-  const { data, error } = await supabase.auth.signInWithOtp({
-    phone: phoneNumber,
-  })
+  try {
+    const { data, error } = await supabase.auth.signInWithOtp({
+      phone: phoneNumber,
+      options: {
+        shouldCreateUser: true,
+      },
+    })
 
-  return { data, error }
+    // Handle phone provider not configured
+    if (error?.code === 'phone_provider_disabled') {
+      console.warn('[v0] Phone OTP Provider Error:', error.message)
+      return {
+        data: null,
+        error: {
+          code: 'PHONE_PROVIDER_ERROR',
+          message: 'SMS provider is not configured. Please contact support.',
+        },
+      }
+    }
+
+    if (error) {
+      console.error('[v0] OTP Sign In Error:', error.message)
+      return { data, error }
+    }
+
+    return { data, error }
+  } catch (err: any) {
+    console.error('[v0] OTP Exception:', err.message)
+    return {
+      data: null,
+      error: {
+        message: 'Failed to send OTP. Please try again.',
+      },
+    }
+  }
 }
 
 /**

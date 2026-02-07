@@ -48,7 +48,14 @@ export function PhoneRegistration({
       const { data, error: signInError } = await signInWithOTP(formattedPhone)
 
       if (signInError) {
-        setError(signInError.message || 'Failed to send OTP')
+        // Check if it's a provider configuration error
+        if (signInError.code === 'PHONE_PROVIDER_ERROR') {
+          setError(
+            'OTP service is being set up. Please try again in a few moments or contact support.'
+          )
+        } else {
+          setError(signInError.message || 'Failed to send OTP. Please try again.')
+        }
         return
       }
 

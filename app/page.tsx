@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ScholarshipCard } from '@/components/scholarship/scholarship-card'
 import { PhoneRegistration } from '@/components/scholarship/phone-registration'
+import { AnimatedStats } from '@/components/scholarship/animated-stats'
 import { Award, Star, Users, BookOpen, Target, Users2 } from 'lucide-react'
 
 const SCHOLARSHIP = {
@@ -208,24 +209,15 @@ export default function ScholarshipLanding() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="max-w-7xl mx-auto px-4 py-16 md:py-24">
-        <div className="grid md:grid-cols-4 gap-8 text-center">
-          {[
-            { number: '70%', label: 'Max Scholarship' },
-            { number: '50', label: 'Scholarship Seats' },
-            { number: '60 mins', label: 'Test Duration' },
-            { number: '50', label: 'Test Questions' },
-          ].map((stat, idx) => (
-            <div key={idx} className="space-y-2">
-              <p className="text-4xl font-bold" style={{ color: 'var(--brand-primary)' }}>
-                {stat.number}
-              </p>
-              <p className="text-gray-600">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Stats Section - Animated */}
+      <AnimatedStats
+        stats={[
+          { number: 70, label: 'Max Scholarship', suffix: '%' },
+          { number: 50, label: 'Scholarship Seats' },
+          { number: 60, label: 'Test Duration', suffix: ' mins' },
+          { number: 50, label: 'Test Questions' },
+        ]}
+      />
 
       {/* FAQ Section */}
       <section id="faq" className="bg-white py-16 md:py-24">
@@ -350,7 +342,7 @@ export default function ScholarshipLanding() {
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            <p>&copy; 2024 Bariar's IAS Academy. All rights reserved. | UPSC Coaching in Bangalore</p>
+            <p>&copy; 2024 Bariar's IAS Academy. All rights reserved.</p>
           </div>
         </div>
       </footer>
