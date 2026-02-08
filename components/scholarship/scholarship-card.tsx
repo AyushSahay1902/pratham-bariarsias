@@ -1,6 +1,6 @@
 'use client'
 
-import { Award, Clock, BookOpen } from 'lucide-react'
+import { Award, CalendarDays, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface ScholarshipCardProps {
@@ -54,22 +54,24 @@ export function ScholarshipCard({
           </p>
         </div>
 
-        {/* Details grid */}
-        <div className="space-y-3">
-          <div className="flex items-start gap-3">
-            <Clock className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
-            <div>
-              <p className="text-sm font-medium text-gray-900">Test Details</p>
-              <p className="text-sm text-gray-600">{testSchedule}</p>
-            </div>
+        {/* Test date highlight */}
+        <div
+          className="rounded-lg p-3 flex items-center gap-3"
+          style={{ backgroundColor: 'var(--brand-bg-warm)', border: '1.5px solid var(--brand-secondary)' }}
+        >
+          <CalendarDays className="w-6 h-6 flex-shrink-0" style={{ color: 'var(--brand-secondary)' }} />
+          <div>
+            <p className="text-sm font-bold text-gray-900">{testSchedule}</p>
+            <p className="text-xs text-gray-500">Register before seats fill up</p>
           </div>
+        </div>
 
-          <div className="flex items-start gap-3">
-            <BookOpen className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
-            <div>
-              <p className="text-sm font-medium text-gray-900">For</p>
-              <p className="text-sm text-gray-600">{targetClasses}</p>
-            </div>
+        {/* Details */}
+        <div className="flex items-start gap-3">
+          <BookOpen className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
+          <div>
+            <p className="text-sm font-medium text-gray-900">For</p>
+            <p className="text-sm text-gray-600">{targetClasses}</p>
           </div>
         </div>
       </div>

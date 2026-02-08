@@ -26,7 +26,7 @@ import {
   registrationSchema,
   type RegistrationFormData,
 } from '@/lib/validations/registration'
-import { Loader2, Check, Sparkles } from 'lucide-react'
+import { Loader2, Check, Sparkles, CalendarDays } from 'lucide-react'
 
 // ── OTP imports — commented out until Supabase phone provider is configured ──
 // import {
@@ -36,7 +36,7 @@ import { Loader2, Check, Sparkles } from 'lucide-react'
 // } from '@/components/ui/input-otp'
 // import { signInWithOTP, verifyOTP } from '@/lib/auth'
 
-type Step = 'form' | 'success'
+type Step = 'form' | 'success' | 'already-registered'
 
 interface RegistrationDialogProps {
   open: boolean
@@ -70,12 +70,18 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
 
     try {
       console.log('[Registration] Submitting to Google Sheets:', data)
-      const { success, error: submitError } = await submitRegistration(data)
+      const result = await submitRegistration(data)
 
-      if (!success) {
-        console.error('[Registration] Google Sheets submit failed:', submitError)
+      if (result.duplicate) {
+        console.log('[Registration] Duplicate entry detected')
+        setStep('already-registered')
+        return
+      }
+
+      if (!result.success) {
+        console.error('[Registration] Google Sheets submit failed:', result.error)
         form.setError('root', {
-          message: submitError || 'Registration failed. Please try again.',
+          message: result.error || 'Registration failed. Please try again.',
         })
         return
       }
@@ -223,6 +229,99 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
           <OTP verification UI was here>
         )}
         */}
+
+        {step === 'already-registered' && (
+          <div className="flex flex-col items-center py-8 px-2">
+            {/* Calendar icon */}
+            <div className="relative mb-6">
+              <div
+                className="relative w-20 h-20 rounded-full flex items-center justify-center success-bounce-in"
+                style={{ backgroundColor: 'var(--brand-bg-soft)' }}
+              >
+                <CalendarDays
+                  className="w-10 h-10 success-draw-check"
+                  style={{ color: 'var(--brand-primary)' }}
+                />
+              </div>
+            </div>
+
+            {/* Text content */}
+            <div className="text-center space-y-2 success-fade-up-1">
+              <h3 className="text-2xl font-bold text-gray-900">
+                Already Registered!
+              </h3>
+              <p className="text-gray-500 text-sm max-w-[300px] mx-auto">
+                You have already registered for the Pratham Scholarship Test. Prepare well and wait for further communications.
+              </p>
+            </div>
+
+            {/* Test date highlight */}
+            <div
+              className="w-full mt-6 rounded-xl p-5 text-center success-fade-up-2"
+              style={{
+                backgroundColor: 'var(--brand-bg-soft)',
+                border: '2px solid var(--brand-primary)',
+              }}
+            >
+              <p className="text-sm font-medium text-gray-600">Test Date</p>
+              <p
+                className="text-2xl font-bold mt-1"
+                style={{ color: 'var(--brand-primary)' }}
+              >
+                21st February 2026
+              </p>
+              <p className="text-sm text-gray-500 mt-1">
+                Stay tuned for venue &amp; timing details
+              </p>
+            </div>
+
+            {/* Tips */}
+            <div
+              className="w-full mt-4 rounded-xl p-4 space-y-2 success-fade-up-2"
+              style={{ backgroundColor: 'var(--brand-bg-warm)' }}
+            >
+              <p className="text-sm font-semibold text-gray-700">Prepare for the test:</p>
+              <ul className="text-sm text-gray-600 space-y-1.5">
+                <li className="flex items-center gap-2">
+                  <div
+                    className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: 'var(--brand-secondary)' }}
+                  >
+                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                  </div>
+                  Revise basic GS concepts &amp; aptitude
+                </li>
+                <li className="flex items-center gap-2">
+                  <div
+                    className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: 'var(--brand-secondary)' }}
+                  >
+                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                  </div>
+                  No heavy current affairs needed
+                </li>
+                <li className="flex items-center gap-2">
+                  <div
+                    className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: 'var(--brand-secondary)' }}
+                  >
+                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                  </div>
+                  Focus on clarity of fundamentals
+                </li>
+              </ul>
+            </div>
+
+            {/* Done button */}
+            <Button
+              onClick={() => handleOpenChange(false)}
+              className="w-full mt-6 text-white success-fade-up-3"
+              style={{ backgroundColor: 'var(--brand-primary)' }}
+            >
+              Got it
+            </Button>
+          </div>
+        )}
 
         {step === 'success' && (
           <div className="flex flex-col items-center py-8 px-2">

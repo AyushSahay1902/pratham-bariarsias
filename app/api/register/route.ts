@@ -44,6 +44,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Parse the Google Apps Script response to check for duplicates
+    const result = await response.json().catch(() => ({ result: 'success' }))
+    console.log('[Register API] Google Sheets response:', result)
+
+    if (result.result === 'duplicate') {
+      return NextResponse.json(
+        { error: 'duplicate', field: result.field },
+        { status: 409 }
+      )
+    }
+
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Registration API error:', error)

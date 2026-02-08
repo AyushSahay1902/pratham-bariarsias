@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { ScholarshipCard } from '@/components/scholarship/scholarship-card'
 import { RegistrationDialog } from '@/components/scholarship/registration-dialog'
 import { AnimatedStats } from '@/components/scholarship/animated-stats'
-import { Award, BookOpen, Target, Users2 } from 'lucide-react'
+import { Award, BookOpen, Target, Users2, CalendarDays } from 'lucide-react'
 
 const SCHOLARSHIP = {
   id: 'pratham-gs-foundation-2027',
   title: 'Pratham Scholarship Test',
   description: 'GS Foundation Course for UPSC CSE 2027',
-  testSchedule: 'Offline - Scheduled Dates',
+  testSchedule: '21st February 2026 - Offline',
   scholarshipPercentage: 70,
   targetClasses: 'UPSC Aspirants 2027',
 }
@@ -52,8 +52,14 @@ export default function ScholarshipLanding() {
           {/* Left side - Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: 'var(--brand-bg-soft)', color: 'var(--brand-primary)' }}>
-                Pratham Scholarship Test
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: 'var(--brand-bg-soft)', color: 'var(--brand-primary)' }}>
+                  Pratham Scholarship Test
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-bold" style={{ backgroundColor: 'var(--brand-secondary)', color: '#fff' }}>
+                  <CalendarDays className="w-4 h-4" />
+                  21st Feb 2026
+                </div>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                 Get up to <span style={{ color: 'var(--brand-primary)' }}>70% Scholarship</span> for GS Foundation Course
