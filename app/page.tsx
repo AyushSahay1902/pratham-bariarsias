@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { ScholarshipCard } from '@/components/scholarship/scholarship-card'
 import { RegistrationDialog } from '@/components/scholarship/registration-dialog'
 import { AnimatedStats } from '@/components/scholarship/animated-stats'
-import { Award, BookOpen, Target, Users2, CalendarDays } from 'lucide-react'
+import { Award, BookOpen, Target, Users2, CalendarDays, MapPin, Phone, Mail, Clock } from 'lucide-react'
+import Image from 'next/image'
 
 const SCHOLARSHIP = {
   id: 'pratham-gs-foundation-2027',
@@ -24,9 +25,7 @@ export default function ScholarshipLanding() {
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
-              <Award className="w-5 h-5 text-white" />
-            </div>
+            <Image src="/logo.png" alt="Bariar's IAS Academy" width={40} height={40} className="rounded-lg" />
             <div>
               <p className="text-xs font-semibold text-gray-600">Bariar's IAS Academy</p>
               <span className="font-bold text-lg text-gray-900">Pratham</span>
@@ -42,12 +41,15 @@ export default function ScholarshipLanding() {
             <a href="#faq" className="text-gray-600 hover:text-gray-900" style={{ color: 'inherit' }}>
               FAQ
             </a>
+            <a href="#venue" className="text-gray-600 hover:text-gray-900" style={{ color: 'inherit' }}>
+              Venue
+            </a>
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 py-12 md:py-20">
+      <section id="about" className="max-w-7xl mx-auto px-4 py-12 md:py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left side - Content */}
           <div className="space-y-8">
@@ -195,6 +197,54 @@ export default function ScholarshipLanding() {
         </div>
       </section>
 
+      {/* Test Venue & Contact */}
+      <section id="venue" className="py-12 md:py-16" style={{ backgroundColor: 'var(--brand-bg-soft)' }}>
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10">Test Venue & Contact</h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Venue */}
+            <a
+              href="https://maps.app.goo.gl/Fi99Py7AQS9WSDaF7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl p-6 flex items-start gap-4 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <MapPin className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
+              <div>
+                <p className="font-semibold text-gray-900">Bariar&apos;s IAS Academy</p>
+                <p className="text-sm text-gray-600 mt-1">2nd floor, 2nd cross Rd, KHB Colony, 5th block, above Airtel office</p>
+                <p className="text-sm text-gray-600">Koramangala, Bengaluru 560030</p>
+                <p className="text-xs mt-2" style={{ color: 'var(--brand-primary)' }}>View on Google Maps &rarr;</p>
+              </div>
+            </a>
+
+            {/* Phone */}
+            <div className="bg-white rounded-xl p-6 flex items-start gap-4 shadow-sm">
+              <Phone className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
+              <div>
+                <p className="font-semibold text-gray-900">Call Us</p>
+                <a href="tel:+918296449003" className="text-sm text-gray-600 hover:underline block mt-1">8296449003</a>
+                <a href="tel:+918296449002" className="text-sm text-gray-600 hover:underline block">8296449002</a>
+                <a href="mailto:admin@bariarsias.com" className="text-xs mt-2 block" style={{ color: 'var(--brand-primary)' }}>
+                  <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> admin@bariarsias.com</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Timing */}
+            <div className="bg-white rounded-xl p-6 flex items-start gap-4 shadow-sm">
+              <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
+              <div>
+                <p className="font-semibold text-gray-900">Test Timing</p>
+                <p className="text-sm text-gray-600 mt-1">21st February 2026</p>
+                <p className="text-sm text-gray-500 mt-1">Exact timing will be communicated via WhatsApp after registration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer CTA */}
       <section className="py-16" style={{ background: `linear-gradient(135deg, var(--brand-primary), #0d5d56)` }}>
         <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
@@ -213,75 +263,44 @@ export default function ScholarshipLanding() {
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h4 className="font-bold text-white mb-4">Bariar's IAS Academy</h4>
-              <p className="text-sm">Concept-driven UPSC coaching with mentorship-focused approach. Located in Bangalore.</p>
+              <h4 className="font-bold text-white mb-4">Bariar&apos;s IAS Academy</h4>
+              <p className="text-sm">Concept-driven UPSC coaching with mentorship-focused approach.</p>
+              <p className="text-sm mt-2">Koramangala, Bengaluru 560030</p>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Programs</h4>
+              <h4 className="font-bold text-white mb-4">Contact</h4>
               <ul className="text-sm space-y-2">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Pratham Test
-                  </a>
+                  <a href="tel:+918296449003" className="hover:text-white">8296449003</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    GS Foundation 2027
-                  </a>
+                  <a href="tel:+918296449002" className="hover:text-white">8296449002</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Optional Courses
-                  </a>
+                  <a href="mailto:admin@bariarsias.com" className="hover:text-white">admin@bariarsias.com</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-4">Explore</h4>
+              <h4 className="font-bold text-white mb-4">Quick Links</h4>
               <ul className="text-sm space-y-2">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    About Academy
-                  </a>
+                  <a href="#features" className="hover:text-white">Why Pratham</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Contact Us
-                  </a>
+                  <a href="#faq" className="hover:text-white">FAQ</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Study Materials
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-white mb-4">Follow</h4>
-              <ul className="text-sm space-y-2">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    YouTube
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    LinkedIn
-                  </a>
+                  <a href="#venue" className="hover:text-white">Test Venue</a>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            <p>&copy; 2024 Bariar's IAS Academy. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Bariar&apos;s IAS Academy. All rights reserved.</p>
           </div>
         </div>
       </footer>
