@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { ScholarshipCard } from '@/components/scholarship/scholarship-card'
-import { PhoneRegistration } from '@/components/scholarship/phone-registration'
+import { RegistrationDialog } from '@/components/scholarship/registration-dialog'
 import { AnimatedStats } from '@/components/scholarship/animated-stats'
-import { Award, Star, Users, BookOpen, Target, Users2 } from 'lucide-react'
+import { Award, BookOpen, Target, Users2 } from 'lucide-react'
 
 const SCHOLARSHIP = {
   id: 'pratham-gs-foundation-2027',
@@ -16,59 +16,7 @@ const SCHOLARSHIP = {
 }
 
 export default function ScholarshipLanding() {
-  const [showRegistration, setShowRegistration] = useState(false)
-  const [registrationComplete, setRegistrationComplete] = useState(false)
-
-  const handleRegistrationComplete = () => {
-    setRegistrationComplete(true)
-    setShowRegistration(false)
-  }
-
-  if (registrationComplete) {
-    return (
-      <div
-        className="min-h-screen bg-gradient-to-b from-teal-600 to-teal-800 flex items-center justify-center px-4"
-        style={{
-          background: `linear-gradient(to bottom, var(--brand-primary), #0d5d56)`,
-        }}
-      >
-        <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center space-y-6">
-          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
-            <Award className="w-8 h-8 text-emerald-600" />
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">Registration Successful!</h2>
-            <p className="text-gray-600 mt-2">
-              You're all set for the Pratham Scholarship Test. Check your email for further details.
-            </p>
-          </div>
-
-          <div
-            className="rounded-lg p-4 space-y-2"
-            style={{ backgroundColor: 'var(--brand-bg-soft)' }}
-          >
-            <p className="text-sm text-gray-700">
-              <span className="font-semibold">Next Steps:</span>
-            </p>
-            <ul className="text-sm text-gray-600 space-y-1">
-              <li>✓ Verify your phone number with OTP</li>
-              <li>✓ Complete your profile details</li>
-              <li>✓ Receive test schedule and preparation materials</li>
-            </ul>
-          </div>
-
-          <button
-            onClick={() => setRegistrationComplete(false)}
-            className="w-full text-white font-semibold py-2 rounded-lg transition-colors"
-            style={{ backgroundColor: 'var(--brand-primary)' }}
-          >
-            Back to Home
-          </button>
-        </div>
-      </div>
-    )
-  }
+  const [dialogOpen, setDialogOpen] = useState(false)
 
   return (
     <div className="min-h-screen bg-white">
@@ -141,32 +89,17 @@ export default function ScholarshipLanding() {
             </div>
           </div>
 
-          {/* Right side - Registration or Card */}
+          {/* Right side - Scholarship Card */}
           <div className="flex justify-center">
-            {showRegistration ? (
-              <div className="w-full max-w-md bg-white rounded-xl shadow-xl p-8">
-                <PhoneRegistration
-                  scholarshipId={SCHOLARSHIP.id}
-                  onRegistrationComplete={handleRegistrationComplete}
-                />
-                <button
-                  onClick={() => setShowRegistration(false)}
-                  className="mt-4 w-full text-center text-gray-600 hover:text-gray-900 text-sm"
-                >
-                  Cancel
-                </button>
-              </div>
-            ) : (
-              <ScholarshipCard
-                id={SCHOLARSHIP.id}
-                title={SCHOLARSHIP.title}
-                description={SCHOLARSHIP.description}
-                testSchedule={SCHOLARSHIP.testSchedule}
-                scholarshipPercentage={SCHOLARSHIP.scholarshipPercentage}
-                targetClasses={SCHOLARSHIP.targetClasses}
-                onRegisterClick={() => setShowRegistration(true)}
-              />
-            )}
+            <ScholarshipCard
+              id={SCHOLARSHIP.id}
+              title={SCHOLARSHIP.title}
+              description={SCHOLARSHIP.description}
+              testSchedule={SCHOLARSHIP.testSchedule}
+              scholarshipPercentage={SCHOLARSHIP.scholarshipPercentage}
+              targetClasses={SCHOLARSHIP.targetClasses}
+              onRegisterClick={() => setDialogOpen(true)}
+            />
           </div>
         </div>
       </section>
@@ -262,7 +195,7 @@ export default function ScholarshipLanding() {
           <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Begin Your UPSC Journey?</h2>
           <p className="text-white text-opacity-90 text-lg">Take Pratham now. Understand where you stand. Start right.</p>
           <button
-            onClick={() => setShowRegistration(true)}
+            onClick={() => setDialogOpen(true)}
             className="inline-block text-teal-700 font-bold py-3 px-8 rounded-lg transition-colors hover:opacity-90"
             style={{ backgroundColor: 'var(--brand-secondary)' }}
           >
@@ -346,6 +279,8 @@ export default function ScholarshipLanding() {
           </div>
         </div>
       </footer>
+
+      <RegistrationDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </div>
   )
 }
