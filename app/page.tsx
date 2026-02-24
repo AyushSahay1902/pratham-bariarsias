@@ -11,7 +11,7 @@ const SCHOLARSHIP = {
   id: 'pratham-gs-foundation-2027',
   title: 'Pratham Scholarship Test',
   description: 'GS Foundation Course for UPSC CSE 2027',
-  testSchedule: '21st February 2026 - Offline',
+  testSchedule: 'Tentative - Offline',
   scholarshipPercentage: 70,
   targetClasses: 'UPSC Aspirants 2027',
 }
@@ -57,10 +57,6 @@ export default function ScholarshipLanding() {
               <div className="flex flex-wrap items-center gap-3">
                 <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: 'var(--brand-bg-soft)', color: 'var(--brand-primary)' }}>
                   Pratham Scholarship Test
-                </div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-bold" style={{ backgroundColor: 'var(--brand-secondary)', color: '#fff' }}>
-                  <CalendarDays className="w-4 h-4" />
-                  21st Feb 2026
                 </div>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
@@ -237,7 +233,7 @@ export default function ScholarshipLanding() {
               <Clock className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: 'var(--brand-primary)' }} />
               <div>
                 <p className="font-semibold text-gray-900">Test Timing</p>
-                <p className="text-sm text-gray-600 mt-1">21st February 2026</p>
+                <p className="text-sm text-gray-600 mt-1">Tentative 28th Feb</p>
                 <p className="text-sm text-gray-500 mt-1">Exact timing will be communicated via WhatsApp after registration.</p>
               </div>
             </div>

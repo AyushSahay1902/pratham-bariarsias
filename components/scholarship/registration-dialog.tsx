@@ -268,7 +268,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
                 className="text-2xl font-bold mt-1"
                 style={{ color: 'var(--brand-primary)' }}
               >
-                21st February 2026
+                Tentative 28th Feb
               </p>
               <p className="text-sm text-gray-500 mt-1">
                 Stay tuned for venue &amp; timing details
